@@ -1,0 +1,113 @@
+/* General settings */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: arial,sans-serif;
+}
+
+body {
+    background-color: grey;
+}
+
+.addFormBox {
+    position: fixed;
+    height: min-content;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: ease-in-out .7s;
+}
+
+.hiden {
+    transform: translate(-50%, -250%);
+    opacity: 0;
+}
+
+.addForm {
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    height: min-content;
+    margin: auto;
+    border: .3em solid purple;
+    border-radius: 1em;
+    text-align: center;
+    align-items: center;
+    padding: 1em;
+    z-index: 1;
+    background-color: rosybrown;
+}
+
+label, input {
+    width: 25em;
+    padding: .5em;
+}
+
+.checker {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    padding: .5em;
+    text-align: center;
+    align-items: center;
+}
+
+.read_question {
+    width: auto;
+}
+
+#read {
+    width: min-content;
+}
+
+.shelf_title {
+    width: max-content;
+    margin: 1em auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.shelf {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 auto;
+    justify-content: center;
+
+}
+
+.volumin {
+    background-color: antiquewhite;
+    padding: 2em;
+    margin: 1em;
+    width: 15em;
+    word-wrap: break-word;
+}
+
+/* Book itself */
+
+.author, .title, .pages, .read, .removeBook {
+    padding: .5em;
+}
+
+.removeBook {
+    display: flex;
+    align-items: center;
+}
+
+.removeBook img {
+    width: 1.5em;
+    margin: .5em auto 0 auto;
+    cursor: pointer;
+}
+
+.newBook {
+    width: min-content;
+    padding: 1em;
+    background-color: slateblue;
+    cursor: pointer;
+    margin: 1em;
+}

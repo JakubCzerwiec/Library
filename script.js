@@ -5,6 +5,12 @@ let addForm = document.querySelector('.addForm');
 let shelf = document.querySelector('.shelf');
 let inputPlaceholder = document.getElementsByTagName('input');
 
+let volumin = document.querySelectorAll('.volumin');
+
+let formBox = document.querySelector('.addFormBox');
+
+let newBookBtn = document.querySelector('.newBook');
+
 
 /* Book constructor */
 
@@ -14,6 +20,13 @@ function Book (title, author, pages, read) {
     this.pages = pages
     this.read = read
 }
+
+/* Some default books on my shelf */
+let book1 = new Book ('The bad', 'Leopold T.', '600', true);
+let book2 = new Book ('Travelers', 'Jonny Germ', '500', true);
+
+myLibrary.push(book1, book2)
+render()
 
 
 /* Adding book to Library */
@@ -29,6 +42,7 @@ addForm.addEventListener('submit', (e) => {
 
     myLibrary.push(book);
     console.log(myLibrary)
+    formBox.classList.toggle('hiden')
     render()
     clearInput()
 })
@@ -45,10 +59,12 @@ function render () {
             let bookPages = myLibrary[i].pages;
             let bookRead;
 
+
+
             if (myLibrary[i].read == true) {
-                bookRead = 'I have read it.'
+                bookRead = 'I have read it.';
             } else {
-                bookRead = 'I did not read it.'
+                bookRead = 'I did not read it';
             }
 
 
@@ -58,13 +74,53 @@ function render () {
             vol.innerHTML += `<div class="title">Title: ${bookTitle} </div>` + 
                             `<div class="author">By: ${bookAuthor} </div>` +
                             `<div class="pages">No. of pages: ${bookPages} </div>` +
-                            `<div class="read">${bookRead} </div>`;
-    }
-} 
+                            `<div class="read">${bookRead} </div>` +
+                            `<div class="removeBook"><img src="bin.png"></div>`;
 
-function clearInput() {
-    for (let i = 0; i < inputPlaceholder.length-1; i++) {
-        inputPlaceholder[i].value = '';
+                 initiateListeners()
+
+                            
     }
     
+} 
+
+
+/* Cleaning input values */
+function clearInput() {
+    for (let i = 0; i < inputPlaceholder.length-2; i++) {
+        inputPlaceholder[i].value = '';
+    }
+}
+
+
+/* Event listener for 'New Book Button' showing/hiding input for new book */
+newBookBtn.addEventListener('click', () => {
+    formBox.classList.toggle('hiden')
+})
+
+
+/* Listeners for changing 'read' status of a book and for 'remove book' button */
+function initiateListeners () {
+    let readBtn = document.querySelectorAll(`.read`);
+    let removeBookBtn = document.querySelectorAll('.removeBook')
+
+    readBtn.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            if (myLibrary[index].read == false) {
+                myLibrary[index].read = true;
+            } else if (myLibrary[index].read == true) {
+                myLibrary[index].read = false
+            }
+            
+            render()
+        })
+    })
+
+    removeBookBtn.forEach((item, index) => {
+        item.addEventListener('click', () => {
+            myLibrary.splice(index, 1)
+
+            render()
+        })
+    })
 }
