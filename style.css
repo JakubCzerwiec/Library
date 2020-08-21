@@ -11,6 +11,9 @@ body {
     background-color: grey;
 }
 
+
+/* Add new book form */
+
 .addFormBox {
     position: fixed;
     height: min-content;
@@ -62,6 +65,9 @@ label, input {
     width: min-content;
 }
 
+
+/* Header */
+
 .shelf_title {
     width: max-content;
     margin: 1em auto;
@@ -70,14 +76,30 @@ label, input {
     align-items: center;
 }
 
+
+/* New book button */
+
+.newBook {
+    width: min-content;
+    padding: 1em;
+    background-color: slateblue;
+    cursor: pointer;
+    margin: 1em;
+}
+
+
+/* Bookshelf */
+
 .shelf {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     margin: 0 auto;
     justify-content: center;
-
 }
+
+
+/* Book itself */
 
 .volumin {
     background-color: antiquewhite;
@@ -85,12 +107,15 @@ label, input {
     margin: 1em;
     width: 15em;
     word-wrap: break-word;
+    border-radius: 1em;
 }
-
-/* Book itself */
 
 .author, .title, .pages, .read, .removeBook {
     padding: .5em;
+}
+
+.read {
+    cursor: pointer;
 }
 
 .removeBook {
@@ -102,12 +127,4 @@ label, input {
     width: 1.5em;
     margin: .5em auto 0 auto;
     cursor: pointer;
-}
-
-.newBook {
-    width: min-content;
-    padding: 1em;
-    background-color: slateblue;
-    cursor: pointer;
-    margin: 1em;
 }
