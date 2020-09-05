@@ -12,18 +12,30 @@ let formBox = document.querySelector('.addFormBox');
 let newBookBtn = document.querySelector('.newBook');
 
 
+/* Creating Book class */
+
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title
+        this.author = author
+        this.pages = pages
+        this.read = read
+    }
+}
+
+
 /* Book constructor */
 
-function Book (title, author, pages, read) {
+/* function Book (title, author, pages, read) {
     this.title = title
     this.author = author
     this.pages = pages
     this.read = read
-}
+} */
 
 /* Some default books on my shelf */
 
-let book1 = new Book ('The bad', 'Leopold T.', '600', true);
+let book1 = new Book('The bad', 'Leopold T.', '600', true);
 let book2 = new Book ('Travelers', 'Jonny Germ', '500', true);
 
 myLibrary.push(book1, book2)
