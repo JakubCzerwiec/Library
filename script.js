@@ -35,7 +35,7 @@ class Book {
 
 /* Some default books on my shelf */
 
-let book1 = new Book('The bad', 'Leopold T.', '600', true);
+let book1 = new Book('The Bad', 'Leopold T.', '600', true);
 let book2 = new Book ('Travelers', 'Jonny Germ', '500', true);
 
 myLibrary.push(book1, book2)
