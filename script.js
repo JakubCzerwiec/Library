@@ -54,6 +54,7 @@ addForm.addEventListener('submit', (e) => {
     let book = new Book (title, author, pages, read);
 
     myLibrary.push(book);
+    setData();
     console.log(myLibrary)
     formBox.classList.toggle('hiden')
     render()
@@ -130,7 +131,7 @@ function initiateListeners () {
                 myLibrary[index].read = false;
                 
             }
-            
+            setData()
             render()
         })
     })
@@ -141,8 +142,31 @@ function initiateListeners () {
     removeBookBtn.forEach((item, index) => {
         item.addEventListener('click', () => {
             myLibrary.splice(index, 1)
-
+            setData()
             render()
         })
     })
 }
+
+
+
+
+
+function setData() {
+    localStorage.setItem(`myLibrary`, JSON.stringify(myLibrary));
+}
+
+//pulls books from local storage when page is refreshed
+function restore() {
+    if(!localStorage.myLibrary) {
+        render();
+    }else {
+        let objects = localStorage.getItem('myLibrary') // gets information from local storage to use in below loop to create DOM/display
+        objects = JSON.parse(objects);
+        myLibrary = objects;
+        render();
+    }
+}
+
+restore();
+  
