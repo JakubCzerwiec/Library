@@ -38,8 +38,8 @@ class Book {
 let book1 = new Book('The Bad', 'Leopold T.', '600', true);
 let book2 = new Book ('Travelers', 'Jonny Germ', '500', true);
 
-myLibrary.push(book1, book2)
-render()
+myLibrary.push(book1, book2);
+render();
 
 
 /* Adding book to Library */
@@ -55,10 +55,10 @@ addForm.addEventListener('submit', (e) => {
 
     myLibrary.push(book);
     setData();
-    console.log(myLibrary)
-    formBox.classList.toggle('hiden')
-    render()
-    clearInput()
+    console.log(myLibrary);
+    formBox.classList.toggle('hiden');
+    render();
+    clearInput();
 })
 
 
@@ -91,7 +91,7 @@ function render () {
                             `<div class="removeBook"><img src="bin.png"></div>`;
                             
 
-        initiateListeners()                 
+        initiateListeners();         
     }
     
 } 
@@ -109,7 +109,7 @@ function clearInput() {
 /* Event listener for 'New Book Button' showing/hiding input form for new book */
 
 newBookBtn.addEventListener('click', () => {
-    formBox.classList.toggle('hiden')
+    formBox.classList.toggle('hiden');
 })
 
 
@@ -117,7 +117,7 @@ newBookBtn.addEventListener('click', () => {
 
 function initiateListeners () {
     let readBtn = document.querySelectorAll(`.read`);
-    let removeBookBtn = document.querySelectorAll('.removeBook')
+    let removeBookBtn = document.querySelectorAll('.removeBook');
 
 
     /* Changing 'read' book status */
@@ -131,8 +131,8 @@ function initiateListeners () {
                 myLibrary[index].read = false;
                 
             }
-            setData()
-            render()
+            setData();
+            render();
         })
     })
 
@@ -141,26 +141,27 @@ function initiateListeners () {
 
     removeBookBtn.forEach((item, index) => {
         item.addEventListener('click', () => {
-            myLibrary.splice(index, 1)
-            setData()
-            render()
+            myLibrary.splice(index, 1);
+            setData();
+            render();
         })
     })
 }
 
 
 
-
+/* Setting local storage */
 
 function setData() {
     localStorage.setItem(`myLibrary`, JSON.stringify(myLibrary));
 }
 
-//pulls books from local storage when page is refreshed
+/* pulls books from local storage when page is refreshed */
+
 function restore() {
-    if(!localStorage.myLibrary) {
+    if (!localStorage.myLibrary) {
         render();
-    }else {
+    } else {
         let objects = localStorage.getItem('myLibrary') // gets information from local storage to use in below loop to create DOM/display
         objects = JSON.parse(objects);
         myLibrary = objects;
